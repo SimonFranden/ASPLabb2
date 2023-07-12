@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ASPLabb2.ViewModels.StudentTeachers>
+
+@{
+    ViewData["Title"] = "Task2";
+}
+
+<h1>Hämta alla elever med deras lärare</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    <b>Student:</b> @Html.DisplayFor(modelItem => item.Student.FName) @Html.DisplayFor(modelItem => item.Student.LName) 
+                    
+                    <b>Lärare:</b> 
+
+                    @foreach(var teacher in item.Teachers)
+                    {
+                        @Html.DisplayFor(modelItem => teacher.FName) <span> </span> @Html.DisplayFor(modelItem => teacher.LName) <span>,</span>
+                                
+                    }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
